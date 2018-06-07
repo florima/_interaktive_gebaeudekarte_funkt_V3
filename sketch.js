@@ -14,7 +14,7 @@ $( function() {
 } );
 
 var data;
-//var targetYear = 42;
+var hit = false;
 
 function preload(){
   data = loadJSON("data2.json");
@@ -23,6 +23,8 @@ function preload(){
 function setup() {
   createCanvas(800, 600);
 }
+
+
 
 function draw() {
   translate(400, 350);
@@ -37,13 +39,6 @@ function draw() {
   for(var index = 0; index < data.houses.length; index++) {
     var obj = data.houses[index];
 
-//    if (int(obj.erbaut) >= int(Pvon) && obj.erbaut <= int(Pbis) ) {
-
-//    if (obj.erbaut == Pvon) {
-      // if (obj.area == "Sonnwiese") {
-      // fill(0)
-      // }
-
       fill(255);
       noStroke();
       beginShape();
@@ -57,6 +52,8 @@ function draw() {
       }
       endShape(CLOSE);
     }
+    fill(255,100);
+    ellipse(mouseX,mouseY,10,10);
 
 
   //---------- variable Häuser ---------------

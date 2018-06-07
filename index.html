@@ -1,31 +1,32 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Audio</title>
-    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <link rel="stylesheet" href="assets/stylesheets/main.css">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gebäudekarte St. Anton</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="../../p5.min.js"></script>
+  <script src="../../addons/p5.dom.min.js"></script>
+  <script src="../../addons/p5.sound.min.js"></script>
+  <script src="sketch.js"></script>
+</head>
 
-    <!-- <script src="https://demos.jquerymobile.com/1.4.2/js/jquery.js"></script>
-    	<script src="https://demos.jquerymobile.com/1.4.2/js/jquery.mobile-1.4.2.min.js"></script> -->
+<body>
+  <p>
+    <h1>Interaktive Gebäudekarte von St. Anton an der Jeßnitz<h2>
+  <p/>
 
-    <style>
-    html body { height: 100%; }
-      body {
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      }
-    </style>
+  <p>
+    <label for="von">von:</label>
+    <input type="text" id="Vvon" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    <label for="bis">bis:</label>
+    <input type="text" id="Vbis" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  </p>
 
-    <script src="../p5.min.js"></script>
-    <script src="../addons/p5.dom.min.js"></script>
-    <script src="../addons/p5.sound.min.js"></script>
-    <script src="sketch.js"></script>
-    <!--<script src="../addons/p5.collide2d-master/p5.collide2d.js"></script>-->
-  </head>
-  <body>
-  </body>
+  <div id="slider-range"></div>
 
+
+</body>
 </html>

@@ -1,46 +1,47 @@
-$('input').popup(); 
+$( function() {
+  $( "#slider-range" ).slider({
+    range: true,
+    min: 0,
+    max: 2018,
+    values: [ 1992, 2018 ],
+    slide: function( event, ui ) {
+      $( "#Vvon" ).val(ui.values[ 0 ]);
+      $( "#Vbis" ).val(ui.values[ 1 ]);
+    }
+  });
+  $( "#Vvon" ).val( $( "#slider-range" ).slider( "values", 0 ));
+  $( "#Vbis" ).val( $( "#slider-range" ).slider( "values", 1 ));
+} );
 
 var data;
-var targetYear = 42;
+//var targetYear = 42;
 
 function preload(){
   data = loadJSON("data2.json");
 }
 
 function setup() {
-//  noLoop();
   createCanvas(800, 600);
-  tSlider = createSlider(0, 2018, 1992);
-  tSlider.position(20, 20);
-
-
-
-  // if (window.location.hash != "") {
-  //   targetYear = window.location.hash.substring(1);
-  // }
-  // console.log(targetYear);
 }
 
 function draw() {
   translate(400, 350);
   scale(1.5);
+  background(200);
 
-  var targetYear = tSlider.value();
-    background(200);
-    textSize(32);
-    fill(0);
-    text(targetYear, 10, 90);
-
-    domtext = createP(targetYear);
-    domtext.position(40, 40);
+  var Pvon = select('#Vvon').value();
+  var Pbis = select('#Vbis').value();
 
   for(var index = 0; index < data.houses.length; index++) {
     var obj = data.houses[index];
 
-    if (obj.erbaut == targetYear) {
+    if (int(obj.erbaut) >= int(Pvon) && obj.erbaut <= int(Pbis) ) {
+
+//    if (obj.erbaut == Pvon) {
       // if (obj.area == "Sonnwiese") {
       // fill(0)
       // }
+
       fill(0);
 
       beginShape();
@@ -50,8 +51,6 @@ function draw() {
         var x = knotenpunkte[0];
         var y = knotenpunkte[1];
 
-        console.log(obj.vertices);
-        console.log(obj.Adresse);
         vertex(x, y);
       }
       endShape(CLOSE);

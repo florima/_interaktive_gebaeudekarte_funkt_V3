@@ -32,6 +32,35 @@ function draw() {
   var Pvon = select('#Vvon').value();
   var Pbis = select('#Vbis').value();
 
+//---------- graue Häuser ---------------
+
+  for(var index = 0; index < data.houses.length; index++) {
+    var obj = data.houses[index];
+
+//    if (int(obj.erbaut) >= int(Pvon) && obj.erbaut <= int(Pbis) ) {
+
+//    if (obj.erbaut == Pvon) {
+      // if (obj.area == "Sonnwiese") {
+      // fill(0)
+      // }
+
+      fill(255);
+      noStroke();
+      beginShape();
+      for(var vIndex = 0; vIndex < obj.vertices.length; vIndex++ ) {
+        var knotenpunkte = obj.vertices[vIndex];
+
+        var x = knotenpunkte[0];
+        var y = knotenpunkte[1];
+
+        vertex(x, y);
+      }
+      endShape(CLOSE);
+    }
+
+
+  //---------- variable Häuser ---------------
+
   for(var index = 0; index < data.houses.length; index++) {
     var obj = data.houses[index];
 
@@ -41,7 +70,7 @@ function draw() {
       // if (obj.area == "Sonnwiese") {
       // fill(0)
       // }
-
+      noStroke();
       fill(0);
 
       beginShape();

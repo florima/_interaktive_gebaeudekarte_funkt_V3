@@ -13,8 +13,11 @@ $( function() {
   $( "#Vbis" ).val( $( "#slider-range" ).slider( "values", 1 ));
 } );
 
+
 var data;
+var haueserinfo;
 var hit = false;
+//var para;
 
 function preload(){
   data = loadJSON("data2.json");
@@ -22,9 +25,30 @@ function preload(){
 
 function setup() {
   createCanvas(800, 600);
+  noLoop();
+
+  // haueserinfo = createInput("jklo");
+  // haueserinfo.input(updateText);
 }
 
+function updateText() {
+    document.getElementById("informationen").innerHTML = haueserinfo;
+    console.log(haueserinfo);
+//    redraw();
+//    loop();
 
+}
+
+// function updateText() {
+//   para = haueserinfo;
+// //  para = createP();
+// //  para = haueserinfo;
+//   console.log(para);
+// }
+
+function mousePressed() {
+  redraw();
+}
 
 function draw() {
   translate(400, 350);
@@ -44,17 +68,12 @@ function draw() {
       beginShape();
       for(var vIndex = 0; vIndex < obj.vertices.length; vIndex++ ) {
         var knotenpunkte = obj.vertices[vIndex];
-
         var x = knotenpunkte[0];
         var y = knotenpunkte[1];
-
         vertex(x, y);
       }
       endShape(CLOSE);
     }
-    fill(255,100);
-    ellipse(mouseX,mouseY,10,10);
-
 
   //---------- variable Häuser ---------------
 
@@ -63,10 +82,14 @@ function draw() {
 
     if (int(obj.erbaut) >= int(Pvon) && obj.erbaut <= int(Pbis) ) {
 
-//    if (obj.erbaut == Pvon) {
-      // if (obj.area == "Sonnwiese") {
-      // fill(0)
-      // }
+        for(var indexBeschriftung = 0; indexBeschriftung < data.houses.length; indexBeschriftung++) {
+
+          haueserinfo = (obj.Familie + ", " + obj.Adresse + " " + obj.Hausnummer);
+          updateText();
+//          document.getElementById("informationen").innerHTML = haueserinfo;
+
+      }
+
       noStroke();
       fill(0);
 
@@ -80,6 +103,15 @@ function draw() {
         vertex(x, y);
       }
       endShape(CLOSE);
+
+//      console.log(obj.Familie + ", " + obj.Adresse + " " + obj.Hausnummer);
+
+
+//      createP(haueserinfo).addClass('text');
+//noLoop();
+//      console.log
+//      haueserinfo.input(updateText);
     }
   }
+
 }
